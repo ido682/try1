@@ -6,7 +6,7 @@ project(zooz_users VERSION 0.1.0)
 
 set(PROJECT_SOURCE_DIR src)
 
-# include_directories(include)
+include_directories(include)
 
 file(GLOB_RECURSE SRC_FILES "${PROJECT_SOURCE_DIR}/*.cpp")
 

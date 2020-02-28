@@ -4,9 +4,7 @@
 
 void Month::AddUser(int day, user_uid_t user)
 {
-    // std::cout<<"RRR in Month::AddUser before, day is "<<day<<std::endl;
     m_days[day].AddUser(user);
-    // std::cout<<"RRR in Month::AddUser after"<<std::endl;
 }
 
 void Month::add_users_in_range_to_external_cont(int begin_day, int end_day, users_unordered_cont_t& ext_users_cont)
