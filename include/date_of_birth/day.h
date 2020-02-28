@@ -1,6 +1,6 @@
 #pragma once
 
-#include "/home/ido/workspace/zooz/users_search/include/common.h"
+#include "common.h"
 
 
 class Day

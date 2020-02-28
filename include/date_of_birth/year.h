@@ -2,8 +2,8 @@
 
 #include <array>
 
-#include "/home/ido/workspace/zooz/users_search/include/common.h"
-#include "/home/ido/workspace/zooz/users_search/include/date_of_birth/month.h"
+#include "common.h"
+#include "date_of_birth/month.h"
 
 
 class Year
@@ -17,9 +17,9 @@ public:
 	Year(const Year& other) = delete;
 	Year& operator=(const Year& other) = delete;
 
-	void AddUser(int day, int month, user_uid_t user);
-	void AddUsersBornAfterGivenDayToExternalCont(int day, int month, users_unordered_cont_t& ext_users_cont);
-	void AddUsersBornOnOrBeforeGivenDayToExternalCont(int day, int month, users_unordered_cont_t& ext_users_cont);
+	void AddUser(day_t day, month_t month, user_uid_t user);
+	void AddUsersBornAfterGivenDayToExternalCont(day_t day, month_t month, users_unordered_cont_t& ext_users_cont);
+	void AddUsersBornOnOrBeforeGivenDayToExternalCont(day_t day, month_t month, users_unordered_cont_t& ext_users_cont);
 
 private:
 	// month 0 will remain empty for code readablity

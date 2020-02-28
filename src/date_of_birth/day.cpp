@@ -1,4 +1,4 @@
-#include "/home/ido/workspace/zooz/users_search/include/date_of_birth/day.h"
+#include "date_of_birth/day.h"
 
 
 void Day::AddUser(user_uid_t user)
