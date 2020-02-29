@@ -5,9 +5,10 @@
 #include <vector>
 
 #include "common.h"
-#include "users/user.h"
 #include "names/names_manager.h"
 #include "date_of_birth/dobs_manager.h"
+#include "long_ids/long_ids_manager.h"
+#include "attributes_managers/countries_manager.h"
 
 
 class UsersManager
@@ -23,11 +24,14 @@ public:
 
     user_uid_t AddUser(const user_t& user);
     users_ordered_cont_t GetUsersByAttribute(search_attr_t attribute, const std::string& value);
+    user_uid_t GetUserByLongID(const long_id_t& long_id);
+
 
 private:
-    // LongIDsManager m_long_ids_manager;
+    LongIDsManager m_long_ids_manager;
     NamesManager m_names_manager;
     DOBsManager m_dobs_manager;
+    CountriesManager m_countries_manager;
 
 }; //UsersManager
 

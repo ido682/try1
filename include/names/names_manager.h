@@ -3,11 +3,14 @@
 #include <map>
 
 #include "common.h"
-#include "names/names_holder.h"
+#include "names/uuids_mapper.h"
 
 
 class NamesManager
 {
+private:
+    const int PARTIAL_MATCH_MIN_SIZE = 3;
+    
 public:
     NamesManager() = default;
     ~NamesManager() = default;
@@ -18,6 +21,6 @@ public:
     users_ordered_cont_t GetUsersByName(const std::string& name);
 
 private:
-    NamesHolder m_first_names;
-    NamesHolder m_last_names;
+    UUIDsMapper m_first_names;
+    UUIDsMapper m_last_names;
 }; //NamesManager

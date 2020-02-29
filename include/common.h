@@ -15,7 +15,7 @@ typedef name_t last_name_t;
 typedef std::pair<first_name_t, last_name_t> full_name_t;
 typedef std::string long_id_t;
 typedef std::string country_t;
-typedef std::string email_t;
+typedef std::string dob_t;
 
 typedef int day_t;
 typedef int month_t;
@@ -31,7 +31,7 @@ typedef struct
 {
     long_id_t long_id;
     name_t full_name;
-    std::string dob;
+    dob_t dob;
     country_t country;
 } user_t;
 
@@ -39,6 +39,7 @@ typedef enum
 {
     ID,
     NAME,
-    AGE
+    AGE,
+    COUNTRY
 } search_attr_t;
 

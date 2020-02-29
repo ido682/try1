@@ -15,6 +15,7 @@ public:
     DBProxy& operator=(const DBProxy& other) = delete;
 
     std::vector<user_t> GetUsersByAttribute(search_attr_t attribute, const std::string& value);
+    user_t GetUserByLongID(long_id_t long_id);
 
 private:
     std::string m_db_file_name;

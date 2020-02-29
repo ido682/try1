@@ -30,6 +30,7 @@ user_t DBProxy::get_user_from_uid(user_uid_t uid)
     return user;    
 }
 
+// Doesn't use get_user_from_uid() to avoid multiple openning and closing of the file
 std::vector<user_t> DBProxy::get_users_from_uids(users_ordered_cont_t& uids)
 {
     std::vector<user_t> users;
@@ -52,7 +53,6 @@ void DBProxy::update_recently_added_users()
 {    
     std::map<pos_in_file_t, std::string> positions_and_lines;
 
-    
     {
         FileReader db_file(m_db_file_name);
         positions_and_lines  = db_file.GetNewLines();
@@ -69,6 +69,8 @@ void DBProxy::update_recently_added_users()
     }
 }
 
+// Having a general function to all attributes avoids future possible mistakes
+// which could be caused by not calling update_recently_added_users()
 std::vector<user_t> DBProxy::GetUsersByAttribute(search_attr_t attribute, const std::string& value)
 {    
     update_recently_added_users();
@@ -77,4 +79,14 @@ std::vector<user_t> DBProxy::GetUsersByAttribute(search_attr_t attribute, const 
 
     return get_users_from_uids(uids);
 }
+
+user_t DBProxy::GetUserByLongID(long_id_t long_id)
+{
+    update_recently_added_users();
+
+    user_uid_t uuid = m_users_manager.GetUserByLongID(long_id);
+
+    return get_user_from_uid(uuid);
+}
+
 
