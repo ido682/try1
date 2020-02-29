@@ -11,33 +11,28 @@ user_uid_t UsersManager::AddUser(const user_t& user)
 {    
     user_uid_t user_uid = m_s_counter++;
     full_name_t full_name = Parser::ParseName(user.full_name);
+    date_t dob = Parser::ParseDate(user.dob);
 
     m_names_manager.AddUser(full_name, user_uid);
+    m_dobs_manager.AddUser(dob, user_uid);
 
     return user_uid;
 }
 
 users_ordered_cont_t UsersManager::GetUsersByAttribute(search_attr_t attribute, const std::string& value)
 {    
-    users_ordered_cont_t user_uids;
-    
     switch (attribute)
     {
     case ID:
-        /* code */
-        break;
+        return users_ordered_cont_t();
 
     case NAME:
-        user_uids = m_names_manager.GetUsersByName(value);
-        break;
+        return m_names_manager.GetUsersByName(value);
 
     case AGE:
-        user_uids = m_dobs_manager.GetUsersInGivenAge(std::stoi(value));
-        break;
+        return m_dobs_manager.GetUsersInGivenAge(std::stoi(value));
     
     default:
-        break;
+        return users_ordered_cont_t();
     }
-
-    return user_uids;
 }

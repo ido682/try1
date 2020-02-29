@@ -27,7 +27,7 @@ namespace Parser
     //                      date_t& dob_out_param,
     //                      country_t& country_out_param);
     user_t ParseUser(const std::string& line);
-    date_t ParseDate(const std::string& date_in_string, const std::string& delimiter);
+    date_t ParseDate(const std::string& date_in_string, const std::string& delimiter = SLASH);
     full_name_t ParseName(const std::string& name_in_one_string);
     std::vector<std::string> Split(const std::string& line, const std::string& delimiter);
     std::string ToLower(const std::string& original_string);

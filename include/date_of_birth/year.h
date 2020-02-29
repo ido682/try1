@@ -18,8 +18,8 @@ public:
 	Year& operator=(const Year& other) = delete;
 
 	void AddUser(day_t day, month_t month, user_uid_t user);
-	void AddUsersBornAfterGivenDayToExternalCont(day_t day, month_t month, users_unordered_cont_t& ext_users_cont);
-	void AddUsersBornOnOrBeforeGivenDayToExternalCont(day_t day, month_t month, users_unordered_cont_t& ext_users_cont);
+	void AddUsersBornAfterGivenDayToExternalCont(day_t day, month_t month, users_ordered_cont_t& ext_users_cont);
+	void AddUsersBornOnOrBeforeGivenDayToExternalCont(day_t day, month_t month, users_ordered_cont_t& ext_users_cont);
 
 private:
 	// month 0 will remain empty for code readablity

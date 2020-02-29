@@ -21,7 +21,7 @@ private:
     std::map<user_uid_t, pos_in_file_t> m_users_and_positions;
     UsersManager m_users_manager;
 
-    void add_user(pos_in_file_t pos, const std::string& line);
+    void add_user_to_user_manager(pos_in_file_t pos, const std::string& line);
     void update_recently_added_users();
 
     user_t get_user_from_uid(user_uid_t uid);

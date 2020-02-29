@@ -8,7 +8,6 @@
 
 typedef size_t user_uid_t;
 typedef std::set<user_uid_t> users_ordered_cont_t;
-typedef std::vector<user_uid_t> users_unordered_cont_t;
 typedef size_t pos_in_file_t;
 typedef std::string name_t;
 typedef name_t first_name_t;

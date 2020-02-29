@@ -13,11 +13,11 @@ public:
 	DOBsManager& operator=(const DOBsManager& other) = delete;
 
     void AddUser(date_t dob, user_uid_t user);
-    users_ordered_cont_t GetUsersInGivenAge(int age);
+    users_ordered_cont_t GetUsersInGivenAge(int age, date_t curr_date = get_curr_date());
 
 private:
     std::map<year_t, Year> m_years;
 
-    date_t get_curr_date();
+    static date_t get_curr_date();
 };
 

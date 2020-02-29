@@ -22,7 +22,6 @@ void print_user(user_t user)
 int main()
 {
 	const std::string FILE_NAME = "data/data_2.csv";
-	const std::string USER10 = "fbc279e0-d944-533f-8470-2f7d58b46151,bujse@azgupdac.lv,Owen Norris,27/5/1980,CM";
 	
 	std::cout<<"Beginning"<<std::endl;
 
@@ -60,6 +59,17 @@ int main()
 	{
 		print_user(user);
 	}
+
+
+	users = db_proxy.GetUsersByAttribute(AGE, "50");
+
+	std::cout<<"MAIN 6"<<std::endl;
+
+	for (const auto& user : users)
+	{
+		print_user(user);
+	}
+
 
 	std::cout<<"MAIN END"<<std::endl;
 

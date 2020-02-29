@@ -10,7 +10,7 @@ DBProxy::DBProxy(const std::string& db_file_name) :
     // Intentionally left blank
 }
 
-void DBProxy::add_user(pos_in_file_t pos, const std::string& line)
+void DBProxy::add_user_to_user_manager(pos_in_file_t pos, const std::string& line)
 {
     user_uid_t uid = m_users_manager.AddUser(Parser::ParseUser(line));
     m_users_and_positions[uid] = pos;
@@ -65,7 +65,7 @@ void DBProxy::update_recently_added_users()
             continue;
         }
         
-        add_user(pos_and_line.first, pos_and_line.second);
+        add_user_to_user_manager(pos_and_line.first, pos_and_line.second);
     }
 }
 
