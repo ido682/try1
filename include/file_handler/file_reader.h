@@ -1,5 +1,8 @@
 #pragma once
 
+#include <map>
+#include <string>
+
 #include "file_handler/file_wrapper.h"
 
 
@@ -14,8 +17,11 @@ public:
     FileReader(const FileReader& other) = delete;
     FileReader& operator=(const FileReader& other) = delete;
 
-    void ProcessNewLines();
-    void ProcessLineRRR(const std::string& line);
+    //RRR
+    // void ProcessNewLines();
+    // void ProcessLineRRR(const std::string& line);
+    std::map<pos_in_file_t, std::string> GetNewLines();
+    std::string GetLine(pos_in_file_t);
 
 private:
     ReadOnlyFileWrapper m_file;

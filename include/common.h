@@ -10,8 +10,9 @@ typedef size_t user_uid_t;
 typedef std::set<user_uid_t> users_ordered_cont_t;
 typedef std::vector<user_uid_t> users_unordered_cont_t;
 typedef size_t pos_in_file_t;
-typedef std::string first_name_t;
-typedef std::string last_name_t;
+typedef std::string name_t;
+typedef name_t first_name_t;
+typedef name_t last_name_t;
 typedef std::pair<first_name_t, last_name_t> full_name_t;
 typedef std::string long_id_t;
 typedef std::string country_t;
@@ -27,12 +28,18 @@ typedef struct
     year_t year;
 } date_t;
 
-typedef struct
+typedef struct 
 {
-    std::string id;
-    std::string email;
-    std::string first_name;
-    std::string last_name;
-    date_t dob;
-    std::string country;
+    long_id_t long_id;
+    name_t full_name;
+    std::string dob;
+    country_t country;
 } user_t;
+
+typedef enum
+{
+    ID,
+    NAME,
+    AGE
+} search_attr_t;
+
