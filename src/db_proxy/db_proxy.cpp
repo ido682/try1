@@ -1,7 +1,7 @@
 #include <iostream> //RRR
 #include "db_proxy/db_proxy.h"
 #include "file_handler/file_reader.h"
-#include "users/parser.h"
+#include "common/parser.h"
 
 
 DBProxy::DBProxy(const std::string& db_file_name) :

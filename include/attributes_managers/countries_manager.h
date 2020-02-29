@@ -2,8 +2,8 @@
 
 #include <map>
 
-#include "common.h"
-#include "names/uuids_mapper.h"
+#include "common/common.h"
+#include "attributes_managers/uuids_mapper.h"
 
 
 class CountriesManager

@@ -1,11 +1,11 @@
 #include <iostream>
 #include <string>
-#include "common.h"
-#include "date_of_birth/dobs_manager.h"
+#include "common/common.h"
+#include "attributes_managers/date_of_birth/dobs_manager.h"
 #include "file_handler/file_wrapper.h"
 #include "file_handler/file_reader.h"
 #include "file_handler/writer_RRR.h" //RRR
-#include "users/parser.h"
+#include "common/parser.h"
 #include "db_proxy/db_proxy.h"
 
 

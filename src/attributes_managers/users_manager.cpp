@@ -1,6 +1,6 @@
 #include "iostream" //RRR
-#include "users/users_manager.h"
-#include "users/parser.h"
+#include "attributes_managers/users_manager.h"
+#include "common/parser.h"
 #include "file_handler/file_reader.h"
 
 

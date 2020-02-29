@@ -2,8 +2,9 @@
 
 #include <array>
 
-#include "common.h"
-#include "date_of_birth/month.h"
+#include "common/common.h"
+#include "attributes_managers/date_of_birth/month.h"
+
 
 
 class Year

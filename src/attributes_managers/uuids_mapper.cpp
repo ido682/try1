@@ -1,7 +1,7 @@
 #include <iostream>
-#include "names/uuids_mapper.h"
-#include "container/cont_funcs.h"
-#include "users/parser.h"
+#include "attributes_managers/uuids_mapper.h"
+#include "common/cont_funcs.h"
+#include "common/parser.h"
 
 
 void UUIDsMapper::AddUser(std::string key, user_uid_t user)

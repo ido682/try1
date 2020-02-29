@@ -4,10 +4,10 @@
 #include <map>
 #include <vector>
 
-#include "common.h"
-#include "names/names_manager.h"
-#include "date_of_birth/dobs_manager.h"
-#include "long_ids/long_ids_manager.h"
+#include "common/common.h"
+#include "attributes_managers/names_manager.h"
+#include "attributes_managers/date_of_birth/dobs_manager.h"
+#include "attributes_managers/long_ids_manager.h"
 #include "attributes_managers/countries_manager.h"
 
 

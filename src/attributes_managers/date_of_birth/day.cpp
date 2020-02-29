@@ -1,6 +1,6 @@
 #include <iostream> //RRR
-#include "date_of_birth/day.h"
-#include "container/cont_funcs.h"
+#include "attributes_managers/date_of_birth/day.h"
+#include "common/cont_funcs.h"
 
 
 void Day::AddUser(user_uid_t user)

@@ -1,8 +1,8 @@
 #pragma once
 
 #include <map>
-#include "common.h"
-#include "date_of_birth/year.h"
+#include "common/common.h"
+#include "attributes_managers/date_of_birth/year.h"
 
 class DOBsManager
 {

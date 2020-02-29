@@ -3,8 +3,8 @@
 #include <vector>
 #include <map>
 
-#include "common.h"
-#include "users/users_manager.h"
+#include "common/common.h"
+#include "attributes_managers/users_manager.h"
 
 class DBProxy
 {

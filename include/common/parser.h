@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "common.h"
+#include "common/common.h"
 
 namespace Parser
 {
