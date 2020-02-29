@@ -7,20 +7,14 @@
 class User
 {
 public:
-    User(const std::string& user_line_from_data_file);
+    User(long_id_t long_id, full_name_t full_name, date_t dob, country_t country);
     ~User() = default;
     User(const User& other) = delete;
 	User& operator=(const User& other) = delete;
 
 private:
-    user_uid_t uid;
-    size_t line_in_data_file;
-    std::string long_id;
-    std::string email;
-    std::string first_name;
-    std::string last_name;
-    date_t dob;
-    std::string country;
-} user_t;
-
-
+    long_id_t m_long_id;
+    full_name_t m_full_name;
+    date_t m_dob;
+    country_t m_country;
+}; //User

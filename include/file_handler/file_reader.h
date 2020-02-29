@@ -6,7 +6,7 @@
 class FileReader
 {
 private:
-    static int m_last_point;
+    static int m_s_last_pos;
 
 public:
     FileReader(const std::string& file_name);
@@ -15,6 +15,7 @@ public:
     FileReader& operator=(const FileReader& other) = delete;
 
     void ProcessNewLines();
+    void ProcessLineRRR(const std::string& line);
 
 private:
     ReadOnlyFileWrapper m_file;
