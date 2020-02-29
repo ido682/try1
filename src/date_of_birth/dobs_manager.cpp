@@ -29,11 +29,11 @@ date_t DOBsManager::get_curr_date()
     return curr_date;
 }
 
-users_unordered_cont_t DOBsManager::GetUsersInGivenAge(int age)
+users_ordered_cont_t DOBsManager::GetUsersInGivenAge(int age)
 {
     date_t curr_date = get_curr_date();
     
-    users_unordered_cont_t users_in_given_age_result;
+    users_ordered_cont_t users_in_given_age_result;
 
     year_t year_to_check_on_or_before_given_day = curr_date.year - age;
     year_t year_to_check_after_given_day = year_to_check_on_or_before_given_day - 1;

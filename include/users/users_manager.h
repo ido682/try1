@@ -7,6 +7,7 @@
 #include "common.h"
 #include "users/user.h"
 #include "names/names_manager.h"
+#include "date_of_birth/dobs_manager.h"
 
 
 class UsersManager
@@ -21,13 +22,12 @@ public:
 	UsersManager& operator=(const UsersManager& other) = delete;
 
     user_uid_t AddUser(const user_t& user);
-    //template<typename>
     users_ordered_cont_t GetUsersByAttribute(search_attr_t attribute, const std::string& value);
 
 private:
     // LongIDsManager m_long_ids_manager;
     NamesManager m_names_manager;
-    // DOBsManager m_dobs_manager;
+    DOBsManager m_dobs_manager;
 
 }; //UsersManager
 

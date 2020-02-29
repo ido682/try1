@@ -32,6 +32,8 @@ std::map<pos_in_file_t, std::string> FileReader::GetNewLines()
 std::string FileReader::GetLine(pos_in_file_t pos_in_file)
 {
     std::string line;
+
+    m_file.GetFileRef().seekg(pos_in_file, m_file.GetFileRef().beg);
     std::getline(m_file.GetFileRef(), line);
 
     return line;

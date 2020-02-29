@@ -79,5 +79,7 @@ namespace Parser
     {
         std::string lowered_string(original_string);
         std::transform(lowered_string.begin(), lowered_string.end(), lowered_string.begin(), ::tolower); 
+
+        return lowered_string;
     }
 }

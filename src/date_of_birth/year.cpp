@@ -7,7 +7,7 @@ void Year::AddUser(day_t day, month_t month, user_uid_t user)
 	m_months[month].AddUser(day, user);
 }
 
-void Year::AddUsersBornAfterGivenDayToExternalCont(day_t day, month_t month, users_unordered_cont_t& ext_users_cont)
+void Year::AddUsersBornAfterGivenDayToExternalCont(day_t day, month_t month, users_ordered_cont_t& ext_users_cont)
 {	
 	m_months[month].AddUsersBornAfterGivenDayToExternalCont(day, ext_users_cont);
 
@@ -17,7 +17,7 @@ void Year::AddUsersBornAfterGivenDayToExternalCont(day_t day, month_t month, use
 	}
 }
 
-void Year::AddUsersBornOnOrBeforeGivenDayToExternalCont(day_t day, month_t month, users_unordered_cont_t& ext_users_cont)
+void Year::AddUsersBornOnOrBeforeGivenDayToExternalCont(day_t day, month_t month, users_ordered_cont_t& ext_users_cont)
 {
 	for (month_t curr_month = 1; curr_month < month; ++curr_month)
 	{

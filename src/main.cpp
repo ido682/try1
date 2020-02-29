@@ -9,6 +9,16 @@
 #include "db_proxy/db_proxy.h"
 
 
+void print_user(user_t user)
+{
+	std::cout<<"----------------------"<<std::endl;
+	std::cout<<"long_id: "<<user.long_id<<std::endl;
+	std::cout<<"full_name: "<<user.full_name<<std::endl;
+	std::cout<<"dob: "<<user.dob<<std::endl;
+	std::cout<<"country: "<<user.country<<std::endl;
+	std::cout<<"----------------------"<<std::endl;
+}
+
 int main()
 {
 	const std::string FILE_NAME = "data/data_2.csv";
@@ -16,58 +26,43 @@ int main()
 	
 	std::cout<<"Beginning"<<std::endl;
 
+	users_ordered_cont_t test();
+
 	std::cout<<"MAIN 1"<<std::endl;
 
 	DBProxy db_proxy(FILE_NAME);
 
 	std::cout<<"MAIN 2"<<std::endl;
 
-	auto users = db_proxy.GetUsersByAttribute(NAME, "AVI");
+	auto users = db_proxy.GetUsersByAttribute(NAME, "hA");
 
 	std::cout<<"MAIN 3"<<std::endl;
 
 	for (const auto& user : users)
 	{
-		std::cout<<"----------------------"<<std::endl;
-		std::cout<<"long_id: "<<user.long_id<<std::endl;
-		std::cout<<"full_name: "<<user.full_name<<std::endl;
-		std::cout<<"dob: "<<user.dob<<std::endl;
-		std::cout<<"country: "<<user.country<<std::endl;
+		print_user(user);
 	}
+
+	users = db_proxy.GetUsersByAttribute(NAME, "HA");
 
 	std::cout<<"MAIN 4"<<std::endl;
 
-	// {
-	// 	Writer file_for_writing(FILE_NAME);
-	// 	file_for_writing.AddLine(USER10);
-	// }
+	for (const auto& user : users)
+	{
+		print_user(user);
+	}
 
-	// {
-	// 	FileReader file_data_2(FILE_NAME);
-	// 	file_data_2.ProcessNewLines();
-	// }
+	users = db_proxy.GetUsersByAttribute(AGE, "50");
 
-	// DOBsManager dobs_manager;
-	// dobs_manager.AddUser({9, 3, 1985}, 111);
-	// dobs_manager.AddUser({28, 2, 1985}, 222);
-	// dobs_manager.AddUser({29, 2, 1985}, 333);
-	// dobs_manager.AddUser({4, 4, 2010}, 444);
-	// dobs_manager.AddUser({27, 2, 1985}, 555);
+	std::cout<<"MAIN 5"<<std::endl;
 
-	// users_unordered_cont_t users_aged_35 = dobs_manager.GetUsersInGivenAge(35);
-	// std::cout<<"Age 35:"<<users_aged_35.size()<<std::endl;
-	// for (const auto& user : users_aged_35)
-	// {
-	// 	std::cout<<user<<std::endl;
-	// }
+	for (const auto& user : users)
+	{
+		print_user(user);
+	}
 
-	// users_unordered_cont_t users_aged_34 = dobs_manager.GetUsersInGivenAge(34);
-	// std::cout<<"Age 34:"<<std::endl;
-	// for (const auto& user : users_aged_34)
-	// {
-	// 	std::cout<<user<<std::endl;
-	// }
-	
+	std::cout<<"MAIN END"<<std::endl;
+
 
 	std::cout<<"End"<<std::endl;
 
