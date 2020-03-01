@@ -19,8 +19,8 @@ public:
 	Year& operator=(const Year& other) = delete;
 
 	void AddUUID(day_t day, month_t month, uuid_t uuid);
-	void AddUUIDsBornAfterGivenDayToExternalCont(day_t day, month_t month, ordered_uuids_t& ext_uuids_cont);
-	void AddUUIDsBornOnOrBeforeGivenDayToExternalCont(day_t day, month_t month, ordered_uuids_t& ext_uuids_cont);
+	void ExportUUIDsBornAfterDay(day_t day, month_t month, ordered_uuids_t& ext_uuids_cont);
+	void ExportUUIDsBornOnOrBeforeDay(day_t day, month_t month, ordered_uuids_t& ext_uuids_cont);
 	void DeleteUUID(day_t day, month_t month, uuid_t uuid);
 
 private:

@@ -6,7 +6,7 @@ void Year::AddUUID(day_t day, month_t month, uuid_t uuid)
 	m_months[month].AddUUID(day, uuid);
 }
 
-void Year::AddUUIDsBornAfterGivenDayToExternalCont(day_t day, month_t month, ordered_uuids_t& ext_uuids_cont)
+void Year::ExportUUIDsBornAfterDay(day_t day, month_t month, ordered_uuids_t& ext_uuids_cont)
 {	
 	m_months[month].ExportUUIDsBornAfterDay(day, ext_uuids_cont);
 
@@ -16,7 +16,7 @@ void Year::AddUUIDsBornAfterGivenDayToExternalCont(day_t day, month_t month, ord
 	}
 }
 
-void Year::AddUUIDsBornOnOrBeforeGivenDayToExternalCont(day_t day, month_t month, ordered_uuids_t& ext_uuids_cont)
+void Year::ExportUUIDsBornOnOrBeforeDay(day_t day, month_t month, ordered_uuids_t& ext_uuids_cont)
 {
 	for (month_t curr_month = 1; curr_month < month; ++curr_month)
 	{

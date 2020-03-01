@@ -17,8 +17,8 @@ void UUIDsMapper::AddUUID(std::string key, uuid_t uuid)
     m_keys_and_uids[lowered_key].insert(uuid);
 }
 
-void UUIDsMapper::add_uuids_with_exact_key_match_to_external_cont(const std::string& key,
-                                                                  ordered_uuids_t& ext_uuids_cont)
+void UUIDsMapper::export_uuids_with_exact_match(const std::string& key,
+                                                ordered_uuids_t& ext_uuids_cont)
 {
     auto key_iter = m_keys_and_uids.find(key);
     if (key_iter == m_keys_and_uids.end())
@@ -32,8 +32,8 @@ void UUIDsMapper::add_uuids_with_exact_key_match_to_external_cont(const std::str
     }
 }
 
-void UUIDsMapper::add_uuids_with_partial_key_match_to_external_cont(const std::string& key,
-                                                                    ordered_uuids_t& ext_uuids_cont)
+void UUIDsMapper::export_uuids_with_partial_match(const std::string& key,
+                                                  ordered_uuids_t& ext_uuids_cont)
 {
     const uuid_t DUMMY_USER = 0;
     size_t key_length = key.length();
@@ -79,20 +79,20 @@ void UUIDsMapper::add_uuids_with_partial_key_match_to_external_cont(const std::s
     }
 }
 
-void UUIDsMapper::AddUUIDsWithGivenKeyToExternalCont(const std::string& key,
-                                                     ordered_uuids_t& ext_uuids_cont,
-                                                     int partial_match_min_size)
+void UUIDsMapper::ExportMatchedUUIDs(const std::string& key,
+                                     ordered_uuids_t& ext_uuids_cont,
+                                     int partial_match_min_size)
 {
     std::string lowered_key = Parser::ToLower(key);
     size_t key_length = lowered_key.length();
 
     if ((partial_match_min_size != 0) && (key_length >= partial_match_min_size))
     {
-        add_uuids_with_partial_key_match_to_external_cont(lowered_key, ext_uuids_cont);
+        export_uuids_with_partial_match(lowered_key, ext_uuids_cont);
     }
     else
     {
-        add_uuids_with_exact_key_match_to_external_cont(lowered_key, ext_uuids_cont);
+        export_uuids_with_exact_match(lowered_key, ext_uuids_cont);
     }
 }
 

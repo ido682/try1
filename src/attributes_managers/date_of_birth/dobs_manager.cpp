@@ -38,8 +38,8 @@ ordered_uuids_t DOBsManager::GetUUIDsInGivenAge(int age, date_t curr_date)
     year_t year_to_check_on_or_before_given_day = curr_date.year - age;
     year_t year_to_check_after_given_day = year_to_check_on_or_before_given_day - 1;
 
-    m_years[year_to_check_after_given_day].AddUUIDsBornAfterGivenDayToExternalCont(curr_date.day, curr_date.month, users_in_given_age_result);
-    m_years[year_to_check_on_or_before_given_day].AddUUIDsBornOnOrBeforeGivenDayToExternalCont(curr_date.day, curr_date.month, users_in_given_age_result);
+    m_years[year_to_check_after_given_day].ExportUUIDsBornAfterDay(curr_date.day, curr_date.month, users_in_given_age_result);
+    m_years[year_to_check_on_or_before_given_day].ExportUUIDsBornOnOrBeforeDay(curr_date.day, curr_date.month, users_in_given_age_result);
 
     return users_in_given_age_result;
 }

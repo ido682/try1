@@ -22,8 +22,8 @@ ordered_uuids_t NamesManager::get_uuids_by_name_with_one_word(const name_t& name
 {
     ordered_uuids_t uuids_result;
 
-    m_first_names.AddUUIDsWithGivenKeyToExternalCont(name, uuids_result, PARTIAL_MATCH_MIN_SIZE);
-    m_last_names.AddUUIDsWithGivenKeyToExternalCont(name, uuids_result, PARTIAL_MATCH_MIN_SIZE);
+    m_first_names.ExportMatchedUUIDs(name, uuids_result, PARTIAL_MATCH_MIN_SIZE);
+    m_last_names.ExportMatchedUUIDs(name, uuids_result, PARTIAL_MATCH_MIN_SIZE);
 
     return uuids_result;
 }
@@ -36,8 +36,8 @@ ordered_uuids_t NamesManager::get_uuids_by_name_with_two_words(const name_t& nam
 
     full_name_t full_name = Parser::ParseName(name);
 
-    m_first_names.AddUUIDsWithGivenKeyToExternalCont(full_name.first, first_name_matches);
-    m_last_names.AddUUIDsWithGivenKeyToExternalCont(full_name.second, second_name_matches);
+    m_first_names.ExportMatchedUUIDs(full_name.first, first_name_matches);
+    m_last_names.ExportMatchedUUIDs(full_name.second, second_name_matches);
 
     for (const auto& first_name_match : first_name_matches)
     {

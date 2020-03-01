@@ -10,7 +10,7 @@ ordered_uuids_t CountriesManager::GetUUIDsByCountry(const country_t& country)
 {
     ordered_uuids_t uuids_result;
     
-    m_countries.AddUUIDsWithGivenKeyToExternalCont(country, uuids_result);
+    m_countries.ExportMatchedUUIDs(country, uuids_result);
 
     return uuids_result;                                           
 }
