@@ -5,7 +5,7 @@
 
 namespace ContFuncs
 {
-    void AddUsersInContToExternalCont(const ordered_uuids_t& base_cont,
-                                      ordered_uuids_t& ext_cont);
+    void ExportAllUUIDs(const ordered_uuids_t& base_cont,
+                        ordered_uuids_t& ext_cont);
 } //ContFuncs
 

@@ -51,14 +51,14 @@ void UUIDsMapper::add_uuids_with_partial_key_match_to_external_cont(const std::s
     else
     {
         // Users will be added only if this key isn't a dummy
-        ContFuncs::AddUsersInContToExternalCont(key_iter->second, ext_uuids_cont);
+        ContFuncs::ExportAllUUIDs(key_iter->second, ext_uuids_cont);
     }
     
     // From this point - start iterating towards the map's end
     key_iter++;
     for (; (key_iter != m_keys_and_uids.end()) && (key_iter->first.compare(0, key_length, key) == 0); ++key_iter)
     {
-        ContFuncs::AddUsersInContToExternalCont(key_iter->second, ext_uuids_cont);
+        ContFuncs::ExportAllUUIDs(key_iter->second, ext_uuids_cont);
     }
 
     // And now - towards the map's beginning
@@ -68,7 +68,7 @@ void UUIDsMapper::add_uuids_with_partial_key_match_to_external_cont(const std::s
 
     for (; (!is_iter_in_beginning_in_prev_loop) && (key_iter->first.compare(0, key_length, key) == 0); --key_iter)
     {
-        ContFuncs::AddUsersInContToExternalCont(key_iter->second, ext_uuids_cont);
+        ContFuncs::ExportAllUUIDs(key_iter->second, ext_uuids_cont);
 
         is_iter_in_beginning_in_prev_loop = (key_iter == m_keys_and_uids.begin());
     }

@@ -25,6 +25,9 @@ private:
     UUIDsMapper m_first_names;
     UUIDsMapper m_last_names;
 
+    // The fastest access to names would be with a Trie data structure,
+    // but that would cost us in storage, plus - using an STL implemented
+    // data structures is always a good idea
     ordered_uuids_t get_uuids_by_name_with_one_word(const name_t& name);
     ordered_uuids_t get_uuids_by_name_with_two_words(const name_t& name);
 

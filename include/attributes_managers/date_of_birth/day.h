@@ -12,7 +12,7 @@ public:
 	Day& operator=(const Day& other) = delete;
 
 	void AddUUID(uuid_t uuid);
-    void AddUsersToExternalCont(ordered_uuids_t& ext_uuids_cont);
+    void ExportAllUUIDs(ordered_uuids_t& ext_uuids_cont);
 	void DeleteUUID(uuid_t uuid);
 
 private:

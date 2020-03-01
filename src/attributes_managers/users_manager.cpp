@@ -10,7 +10,8 @@ uuid_t UsersManager::AddUser(const user_t& user)
 {    
     // Having a uuid in addition to the long_id enables us to search
     // in the data base in a propriate order, what gives us better performance
-    // when reading from I/O
+    // when reading from I/O. Of course we can also keep the data itself,
+    // but that would cost us in storage and in having duplicated data (not a good idea)
     uuid_t uuid = m_s_counter++;
     full_name_t full_name = Parser::ParseName(user.full_name);
     date_t dob = Parser::ParseDate(user.dob);
