@@ -22,10 +22,10 @@ public:
     UsersManager(const UsersManager& other) = delete;
 	UsersManager& operator=(const UsersManager& other) = delete;
 
-    user_uid_t AddUser(const user_t& user);
-    users_ordered_cont_t GetUsersByAttribute(search_attr_t attribute, const std::string& value);
-    user_uid_t GetUserByLongID(const long_id_t& long_id);
-    user_uid_t DeleteUser(const user_t& user, user_uid_t uuid);
+    uuid_t AddUser(const user_t& user);
+    ordered_uuids_t GetUUIDsByAttribute(search_attr_t attribute, const std::string& value);
+    uuid_t GetUUIDByLongID(const long_id_t& long_id);
+    uuid_t DeleteUser(const user_t& user, uuid_t uuid);
 
 private:
     LongIDsManager m_long_ids_manager;

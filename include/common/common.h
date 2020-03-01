@@ -6,8 +6,9 @@
 #include <vector>
 #include <string>
 
-typedef size_t user_uid_t;
-typedef std::set<user_uid_t> users_ordered_cont_t;
+
+typedef size_t uuid_t;
+typedef std::set<uuid_t> ordered_uuids_t;
 typedef size_t pos_in_file_t;
 typedef std::string name_t;
 typedef name_t first_name_t;
@@ -37,7 +38,6 @@ typedef struct
 
 typedef enum
 {
-    ID,
     NAME,
     AGE,
     COUNTRY

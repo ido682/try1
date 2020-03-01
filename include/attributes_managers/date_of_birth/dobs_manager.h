@@ -12,13 +12,14 @@ public:
 	DOBsManager(const DOBsManager& other) = delete;
 	DOBsManager& operator=(const DOBsManager& other) = delete;
 
-    void AddUser(date_t dob, user_uid_t user);
-    users_ordered_cont_t GetUsersInGivenAge(int age, date_t curr_date = get_curr_date());
-    void DeleteUser(date_t dob, user_uid_t user);
+    void AddUUID(date_t dob, uuid_t uuid);
+    // curr_date is changeable for testing purpose
+    ordered_uuids_t GetUUIDsInGivenAge(int age, date_t curr_date = get_curr_date());
+    void DeleteUUID(date_t dob, uuid_t uuid);
 
 private:
     std::map<year_t, Year> m_years;
 
     static date_t get_curr_date();
-};
+}; //DOBsManager
 

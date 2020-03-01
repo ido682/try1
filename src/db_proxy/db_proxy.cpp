@@ -1,25 +1,25 @@
-#include <iostream> //RRR
 #include "db_proxy/db_proxy.h"
 #include "file_handler/file_reader.h"
 #include "common/parser.h"
 
 
-DBProxy::DBProxy(const std::string& db_file_name) :
-    m_db_file_name(db_file_name)
+DBProxy::DBProxy(const std::string& db_file_name, UsersManager& users_manager) :
+    m_db_file_name(db_file_name),
+    m_users_manager(users_manager)
 {
     // Intentionally left blank
 }
 
 void DBProxy::add_user_to_user_manager(pos_in_file_t pos, const std::string& line)
 {
-    user_uid_t uid = m_users_manager.AddUser(Parser::ParseUser(line));
+    uuid_t uid = m_users_manager.AddUser(Parser::ParseUser(line));
     m_users_and_positions[uid] = pos;
 }
 
-user_t DBProxy::get_user_from_uid(user_uid_t uid)
+user_t DBProxy::get_user_from_uuid(uuid_t uuid)
 {
     user_t user;
-    pos_in_file_t pos = m_users_and_positions[uid];
+    pos_in_file_t pos = m_users_and_positions[uuid];
 
     {
         FileReader db_file(m_db_file_name);
@@ -30,8 +30,8 @@ user_t DBProxy::get_user_from_uid(user_uid_t uid)
     return user;    
 }
 
-// Doesn't use get_user_from_uid() to avoid multiple openning and closing of the file
-std::vector<user_t> DBProxy::get_users_from_uids(users_ordered_cont_t& uids)
+// Doesn't use get_user_from_uuid() to avoid multiple openning and closing of the file
+std::vector<user_t> DBProxy::get_users_from_uuids(ordered_uuids_t& uids)
 {
     std::vector<user_t> users;
     
@@ -69,22 +69,22 @@ void DBProxy::update_recently_added_users()
     }
 }
 
-// Having a general function to all attributes avoids future possible mistakes
+// Having a general function to all attributes avoids future mistakes
 // which could be caused by not calling update_recently_added_users()
 std::vector<user_t> DBProxy::GetUsersByAttribute(search_attr_t attribute, const std::string& value)
 {    
     update_recently_added_users();
     
-    auto uids = m_users_manager.GetUsersByAttribute(attribute, value);
+    auto uuids = m_users_manager.GetUUIDsByAttribute(attribute, value);
 
-    return get_users_from_uids(uids);
+    return get_users_from_uuids(uuids);
 }
 
 user_t DBProxy::GetUserByLongID(long_id_t long_id)
 {
     update_recently_added_users();
 
-    user_uid_t uuid = m_users_manager.GetUserByLongID(long_id);
+    uuid_t uuid = m_users_manager.GetUUIDByLongID(long_id);
 
     // Implies user doesn't exist
     if (uuid == 0)
@@ -92,12 +92,12 @@ user_t DBProxy::GetUserByLongID(long_id_t long_id)
         return {USER_DOESNT_EXIT, USER_DOESNT_EXIT, USER_DOESNT_EXIT, USER_DOESNT_EXIT};
     }
 
-    return get_user_from_uid(uuid);
+    return get_user_from_uuid(uuid);
 }
 
 void DBProxy::DeleteUser(long_id_t long_id)
 {
-    user_uid_t uuid_to_delete = m_users_manager.GetUserByLongID(long_id);
+    uuid_t uuid_to_delete = m_users_manager.GetUUIDByLongID(long_id);
     // User not found
     if (uuid_to_delete == 0)
     {

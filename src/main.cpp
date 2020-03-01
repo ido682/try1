@@ -2,10 +2,6 @@
 #include <string>
 #include "common/common.h"
 #include "attributes_managers/date_of_birth/dobs_manager.h"
-#include "file_handler/file_wrapper.h"
-#include "file_handler/file_reader.h"
-#include "file_handler/writer_RRR.h" //RRR
-#include "common/parser.h"
 #include "db_proxy/db_proxy.h"
 
 
@@ -25,7 +21,8 @@ int main()
 	
 	std::cout<<"*****************   MAIN Beginning"<<std::endl;
 
-	DBProxy db_proxy(FILE_NAME);
+	UsersManager users_manager;
+	DBProxy db_proxy(FILE_NAME, users_manager);
 
 	std::cout<<"*****************   MAIN - names #1 - hA"<<std::endl;
 	auto users = db_proxy.GetUsersByAttribute(NAME, "hA");
@@ -125,3 +122,4 @@ int main()
 
 	return 0;
 }
+

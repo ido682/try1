@@ -17,16 +17,16 @@ public:
     Month(const Month& other) = delete;
     Month& operator=(const Month& other) = delete;
 
-    void AddUser(day_t day, user_uid_t user);
-    void AddUsersBornAfterGivenDayToExternalCont(day_t day, users_ordered_cont_t& ext_users_cont);
-	void AddUsersBornOnOrBeforeGivenDayToExternalCont(day_t day, users_ordered_cont_t& ext_users_cont);
-	void AddUsersOfWholeMonthToExternalCont(users_ordered_cont_t& ext_users_cont);
-    void DeleteUser(day_t day, user_uid_t user);
+    void AddUUID(day_t day, uuid_t uuid);
+    void AddUUIDsBornAfterGivenDayToExternalCont(day_t day, ordered_uuids_t& ext_uuids_cont);
+	void AddUUIDsBornOnOrBeforeGivenDayToExternalCont(day_t day, ordered_uuids_t& ext_uuids_cont);
+	void AddUUIDsOfWholeMonthToExternalCont(ordered_uuids_t& ext_uuids_cont);
+    void DeleteUUID(day_t day, uuid_t uuid);
 
 private:
     // day 0 will remain empty for code readablity
 	std::array<Day, MAX_DAYS_IN_MONTH + 1> m_days;
 
-    void add_users_in_range_to_external_cont(day_t begin_day, day_t end_day, users_ordered_cont_t& ext_users_cont);
-};
+    void add_users_in_range_to_external_cont(day_t begin_day, day_t end_day, ordered_uuids_t& ext_uuids_cont);
+}; //Month
 

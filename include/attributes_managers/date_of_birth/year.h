@@ -18,13 +18,13 @@ public:
 	Year(const Year& other) = delete;
 	Year& operator=(const Year& other) = delete;
 
-	void AddUser(day_t day, month_t month, user_uid_t user);
-	void AddUsersBornAfterGivenDayToExternalCont(day_t day, month_t month, users_ordered_cont_t& ext_users_cont);
-	void AddUsersBornOnOrBeforeGivenDayToExternalCont(day_t day, month_t month, users_ordered_cont_t& ext_users_cont);
-	void DeleteUser(day_t day, month_t month, user_uid_t user);
+	void AddUUID(day_t day, month_t month, uuid_t uuid);
+	void AddUUIDsBornAfterGivenDayToExternalCont(day_t day, month_t month, ordered_uuids_t& ext_uuids_cont);
+	void AddUUIDsBornOnOrBeforeGivenDayToExternalCont(day_t day, month_t month, ordered_uuids_t& ext_uuids_cont);
+	void DeleteUUID(day_t day, month_t month, uuid_t uuid);
 
 private:
 	// month 0 will remain empty for code readablity
 	std::array<Month, MONTHS_IN_YEAR + 1> m_months;
-};
+}; //Year
 

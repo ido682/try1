@@ -1,22 +1,22 @@
 #include "attributes_managers/countries_manager.h"
 
 
-void CountriesManager::AddUser(country_t country, user_uid_t uuid)
+void CountriesManager::AddUUID(country_t country, uuid_t uuid)
 {
-    m_countries.AddUser(country, uuid);
+    m_countries.AddUUID(country, uuid);
 }
 
-users_ordered_cont_t CountriesManager::GetUsersByCountry(const country_t& country)
+ordered_uuids_t CountriesManager::GetUUIDsByCountry(const country_t& country)
 {
-    users_ordered_cont_t users;
+    ordered_uuids_t uuids_result;
     
-    m_countries.AddUsersWithGivenKeyToExternalCont(country, users);
+    m_countries.AddUUIDsWithGivenKeyToExternalCont(country, uuids_result);
 
-    return users;                                           
+    return uuids_result;                                           
 }
 
-void CountriesManager::DeleteUser(country_t country, user_uid_t uuid)
+void CountriesManager::DeleteUUID(country_t country, uuid_t uuid)
 {
-    m_countries.DeleteUser(country, uuid);
+    m_countries.DeleteUUID(country, uuid);
 }
 

@@ -9,10 +9,10 @@
 class DBProxy
 {
 private:
-    const std::string USER_DOESNT_EXIT = "USER_DOESNT_EXIT";
+    const std::string USER_DOESNT_EXIT = "USER_DOESN'T_EXIT";
 
 public:
-    DBProxy(const std::string& db_file_name);
+    DBProxy(const std::string& db_file_name, UsersManager& users_manager);
     ~DBProxy() = default;
     DBProxy(const DBProxy& other) = delete;
     DBProxy& operator=(const DBProxy& other) = delete;
@@ -23,12 +23,12 @@ public:
 
 private:
     std::string m_db_file_name;
-    std::map<user_uid_t, pos_in_file_t> m_users_and_positions;
-    UsersManager m_users_manager;
+    std::map<uuid_t, pos_in_file_t> m_users_and_positions;
+    UsersManager& m_users_manager;
 
     void add_user_to_user_manager(pos_in_file_t pos, const std::string& line);
     void update_recently_added_users();
 
-    user_t get_user_from_uid(user_uid_t uid);
-    std::vector<user_t> get_users_from_uids(users_ordered_cont_t& uids);
+    user_t get_user_from_uuid(uuid_t uuid);
+    std::vector<user_t> get_users_from_uuids(ordered_uuids_t& uuids);
 }; //DBProxy

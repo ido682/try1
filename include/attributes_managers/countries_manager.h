@@ -14,9 +14,9 @@ public:
     CountriesManager(const CountriesManager& other) = delete;
     CountriesManager& operator=(const CountriesManager& other) = delete;
 
-    void AddUser(country_t country, user_uid_t uuid);
-    users_ordered_cont_t GetUsersByCountry(const country_t& country);
-    void DeleteUser(country_t country, user_uid_t uuid);
+    void AddUUID(country_t country, uuid_t uuid);
+    ordered_uuids_t GetUUIDsByCountry(const country_t& country);
+    void DeleteUUID(country_t country, uuid_t uuid);
 
 private:
     UUIDsMapper m_countries;

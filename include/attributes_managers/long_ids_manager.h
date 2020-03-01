@@ -13,12 +13,12 @@ public:
     LongIDsManager(const LongIDsManager& other) = delete;
 	LongIDsManager& operator=(const LongIDsManager& other) = delete;
 
-    void AddUser(long_id_t long_id, user_uid_t uuid);
-    user_uid_t GetUsersByLongID(long_id_t long_id);
-    void DeleteUser(long_id_t long_id);
+    void AddUUID(long_id_t long_id, uuid_t uuid);
+    uuid_t GetUUIDByLongID(long_id_t long_id);
+    void DeleteUUID(long_id_t long_id);
 
 private:
-    std::map<long_id_t, user_uid_t> m_long_ids_and_uuids;
+    std::map<long_id_t, uuid_t> m_long_ids_and_uuids;
 }; //LongIDsManager
 
 

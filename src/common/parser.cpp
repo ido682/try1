@@ -6,23 +6,6 @@
 
 namespace Parser
 {
-    //RRR
-    // void ParseAttributes(const std::string& line,
-    //                      long_id_t& long_id_out_param,
-    //                      email_t& email_out_param,
-    //                      full_name_t& full_name_out_param,
-    //                      date_t& dob_out_param,
-    //                      country_t& country_out_param)
-    // {
-    //     std::vector<std::string> attributes = Split(line, COMMA);
-
-    //     long_id_out_param = attributes[ID];
-    //     email_out_param = attributes[EMAIL];
-    //     full_name_out_param = ParseName(attributes[FULL_NAME]);
-    //     dob_out_param = ParseDate(attributes[DOB], SLASH);
-    //     country_out_param = attributes[COUNTRY];
-    // }
-
     user_t ParseUser(const std::string& line)
     {
         user_t user;
@@ -36,7 +19,7 @@ namespace Parser
         return user;
     }
     
-    date_t ParseDate(const std::string& date_in_string, const std::string& delimiter)
+    date_t ParseDate(const dob_t& date_in_string, const std::string& delimiter)
     {
         std::vector<std::string> dob_split = Split(date_in_string, delimiter);
 
@@ -47,7 +30,7 @@ namespace Parser
         return date;
     }
 
-    full_name_t ParseName(const std::string& name_in_one_string)
+    full_name_t ParseName(const name_t& name_in_one_string)
     {
         std::vector<std::string> name_split = Split(name_in_one_string, SPACE);
 
@@ -82,4 +65,4 @@ namespace Parser
 
         return lowered_string;
     }
-}
+} //Parser

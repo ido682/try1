@@ -11,12 +11,12 @@ public:
 	Day(const Day& other) = delete;
 	Day& operator=(const Day& other) = delete;
 
-	void AddUser(user_uid_t user);
-    void AddUsersToExternalCont(users_ordered_cont_t& ext_users_cont);
-	void DeleteUser(user_uid_t user);
+	void AddUUID(uuid_t uuid);
+    void AddUsersToExternalCont(ordered_uuids_t& ext_uuids_cont);
+	void DeleteUUID(uuid_t uuid);
 
 private:
-	users_ordered_cont_t m_users_cont;
-};
+	ordered_uuids_t m_users_cont;
+}; //Day
 
 

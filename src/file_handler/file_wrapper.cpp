@@ -1,6 +1,4 @@
-#include <iostream> // RRR
 #include "file_handler/file_wrapper.h"
-
 
 
 ReadOnlyFileWrapper::ReadOnlyFileWrapper(const std::string& file_name) :
@@ -18,3 +16,4 @@ std::ifstream& ReadOnlyFileWrapper::GetFileRef()
 {
     return m_file;
 }
+

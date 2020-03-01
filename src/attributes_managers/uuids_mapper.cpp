@@ -4,21 +4,21 @@
 #include "common/parser.h"
 
 
-void UUIDsMapper::AddUser(std::string key, user_uid_t user)
+void UUIDsMapper::AddUUID(std::string key, uuid_t uuid)
 {    
     std::string lowered_key = Parser::ToLower(key);
     
     auto key_iter = m_keys_and_uids.find(key);
     if (key_iter == m_keys_and_uids.end())
     {
-        m_keys_and_uids.insert({key, users_ordered_cont_t()});
+        m_keys_and_uids.insert({key, ordered_uuids_t()});
     }
 
-    m_keys_and_uids[lowered_key].insert(user);
+    m_keys_and_uids[lowered_key].insert(uuid);
 }
 
-void UUIDsMapper::add_users_with_exact_key_match_to_external_cont(const std::string& key,
-                                                                   users_ordered_cont_t& ext_users_cont)
+void UUIDsMapper::add_uuids_with_exact_key_match_to_external_cont(const std::string& key,
+                                                                  ordered_uuids_t& ext_uuids_cont)
 {
     auto key_iter = m_keys_and_uids.find(key);
     if (key_iter == m_keys_and_uids.end())
@@ -28,43 +28,47 @@ void UUIDsMapper::add_users_with_exact_key_match_to_external_cont(const std::str
 
     for (const auto& user : key_iter->second)
     {
-        ext_users_cont.insert(user);
+        ext_uuids_cont.insert(user);
     }
 }
 
-void UUIDsMapper::add_users_with_partial_key_match_to_external_cont(const std::string& key,
-                                                                    users_ordered_cont_t& ext_users_cont)
+void UUIDsMapper::add_uuids_with_partial_key_match_to_external_cont(const std::string& key,
+                                                                    ordered_uuids_t& ext_uuids_cont)
 {
-    const user_uid_t DUMMY_USER = 0;
+    const uuid_t DUMMY_USER = 0;
     size_t key_length = key.length();
     bool is_dummy_user_inserted = false;
     
     auto key_iter = m_keys_and_uids.find(key);
     if (key_iter == m_keys_and_uids.end())
     {
-        AddUser(key, DUMMY_USER);
+        // Inserting dummy user (if needed) enables us to search for partial matches
+        // only in the relevant part of the map, without iterating it all
+        AddUUID(key, DUMMY_USER);
         is_dummy_user_inserted = true;
         key_iter = m_keys_and_uids.find(key);
     }
     else
     {
-        ContFuncs::AddUsersInContToExternalCont(key_iter->second, ext_users_cont);
+        // Users will be added only if this key isn't a dummy
+        ContFuncs::AddUsersInContToExternalCont(key_iter->second, ext_uuids_cont);
     }
     
+    // From this point - start iterating towards the map's end
     key_iter++;
-
     for (; (key_iter != m_keys_and_uids.end()) && (key_iter->first.compare(0, key_length, key) == 0); ++key_iter)
     {
-        ContFuncs::AddUsersInContToExternalCont(key_iter->second, ext_users_cont);
+        ContFuncs::AddUsersInContToExternalCont(key_iter->second, ext_uuids_cont);
     }
 
+    // And now - towards the map's beginning
     key_iter = m_keys_and_uids.find(key);
     bool is_iter_in_beginning_in_prev_loop = (key_iter == m_keys_and_uids.begin());
     --key_iter;
 
     for (; (!is_iter_in_beginning_in_prev_loop) && (key_iter->first.compare(0, key_length, key) == 0); --key_iter)
     {
-        ContFuncs::AddUsersInContToExternalCont(key_iter->second, ext_users_cont);
+        ContFuncs::AddUsersInContToExternalCont(key_iter->second, ext_uuids_cont);
 
         is_iter_in_beginning_in_prev_loop = (key_iter == m_keys_and_uids.begin());
     }
@@ -75,8 +79,8 @@ void UUIDsMapper::add_users_with_partial_key_match_to_external_cont(const std::s
     }
 }
 
-void UUIDsMapper::AddUsersWithGivenKeyToExternalCont(const std::string& key,
-                                                     users_ordered_cont_t& ext_users_cont,
+void UUIDsMapper::AddUUIDsWithGivenKeyToExternalCont(const std::string& key,
+                                                     ordered_uuids_t& ext_uuids_cont,
                                                      int partial_match_min_size)
 {
     std::string lowered_key = Parser::ToLower(key);
@@ -84,15 +88,15 @@ void UUIDsMapper::AddUsersWithGivenKeyToExternalCont(const std::string& key,
 
     if ((partial_match_min_size != 0) && (key_length >= partial_match_min_size))
     {
-        add_users_with_partial_key_match_to_external_cont(lowered_key, ext_users_cont);
+        add_uuids_with_partial_key_match_to_external_cont(lowered_key, ext_uuids_cont);
     }
     else
     {
-        add_users_with_exact_key_match_to_external_cont(lowered_key, ext_users_cont);
+        add_uuids_with_exact_key_match_to_external_cont(lowered_key, ext_uuids_cont);
     }
 }
 
-void UUIDsMapper::DeleteUser(std::string key, user_uid_t uuid)
+void UUIDsMapper::DeleteUUID(std::string key, uuid_t uuid)
 {
     std::string lowered_key = Parser::ToLower(key);
     
