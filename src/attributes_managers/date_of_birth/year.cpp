@@ -27,3 +27,8 @@ void Year::AddUsersBornOnOrBeforeGivenDayToExternalCont(day_t day, month_t month
 	m_months[month].AddUsersBornOnOrBeforeGivenDayToExternalCont(day, ext_users_cont);
 }
 
+void Year::DeleteUser(day_t day, month_t month, user_uid_t user)
+{
+	m_months[month].DeleteUser(day, user);
+}
+

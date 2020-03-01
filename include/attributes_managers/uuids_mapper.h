@@ -18,6 +18,7 @@ public:
     void AddUsersWithGivenKeyToExternalCont(const std::string& key,
                                             users_ordered_cont_t& ext_users_cont,
                                             int partial_match_min_size = 0);
+    void DeleteUser(std::string key, user_uid_t uuid);
 
 private:
     std::map<std::string, users_ordered_cont_t> m_keys_and_uids;

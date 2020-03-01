@@ -13,6 +13,7 @@ public:
 
 	void AddUser(user_uid_t user);
     void AddUsersToExternalCont(users_ordered_cont_t& ext_users_cont);
+	void DeleteUser(user_uid_t user);
 
 private:
 	users_ordered_cont_t m_users_cont;

@@ -25,7 +25,7 @@ public:
     user_uid_t AddUser(const user_t& user);
     users_ordered_cont_t GetUsersByAttribute(search_attr_t attribute, const std::string& value);
     user_uid_t GetUserByLongID(const long_id_t& long_id);
-
+    user_uid_t DeleteUser(const user_t& user, user_uid_t uuid);
 
 private:
     LongIDsManager m_long_ids_manager;

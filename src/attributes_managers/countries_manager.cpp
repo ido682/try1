@@ -15,3 +15,8 @@ users_ordered_cont_t CountriesManager::GetUsersByCountry(const country_t& countr
     return users;                                           
 }
 
+void CountriesManager::DeleteUser(country_t country, user_uid_t uuid)
+{
+    m_countries.DeleteUser(country, uuid);
+}
+

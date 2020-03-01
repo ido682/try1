@@ -92,3 +92,12 @@ void UUIDsMapper::AddUsersWithGivenKeyToExternalCont(const std::string& key,
     }
 }
 
+void UUIDsMapper::DeleteUser(std::string key, user_uid_t uuid)
+{
+    std::string lowered_key = Parser::ToLower(key);
+    
+    auto key_iter = m_keys_and_uids.find(key);
+    
+    m_keys_and_uids[lowered_key].erase(uuid);
+}
+

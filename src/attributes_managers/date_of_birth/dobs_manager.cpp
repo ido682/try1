@@ -42,3 +42,10 @@ users_ordered_cont_t DOBsManager::GetUsersInGivenAge(int age, date_t curr_date)
     return users_in_given_age_result;
 }
 
+void DOBsManager::DeleteUser(date_t dob, user_uid_t user)
+{
+    auto year_iter = m_years.find(dob.year);
+    
+    m_years[dob.year].DeleteUser(dob.day, dob.month, user);
+}
+

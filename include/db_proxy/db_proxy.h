@@ -8,6 +8,9 @@
 
 class DBProxy
 {
+private:
+    const std::string USER_DOESNT_EXIT = "USER_DOESNT_EXIT";
+
 public:
     DBProxy(const std::string& db_file_name);
     ~DBProxy() = default;
@@ -16,6 +19,7 @@ public:
 
     std::vector<user_t> GetUsersByAttribute(search_attr_t attribute, const std::string& value);
     user_t GetUserByLongID(long_id_t long_id);
+    void DeleteUser(long_id_t long_id);
 
 private:
     std::string m_db_file_name;

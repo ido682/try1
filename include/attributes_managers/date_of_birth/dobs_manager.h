@@ -14,6 +14,7 @@ public:
 
     void AddUser(date_t dob, user_uid_t user);
     users_ordered_cont_t GetUsersInGivenAge(int age, date_t curr_date = get_curr_date());
+    void DeleteUser(date_t dob, user_uid_t user);
 
 private:
     std::map<year_t, Year> m_years;

@@ -21,6 +21,7 @@ public:
     void AddUsersBornAfterGivenDayToExternalCont(day_t day, users_ordered_cont_t& ext_users_cont);
 	void AddUsersBornOnOrBeforeGivenDayToExternalCont(day_t day, users_ordered_cont_t& ext_users_cont);
 	void AddUsersOfWholeMonthToExternalCont(users_ordered_cont_t& ext_users_cont);
+    void DeleteUser(day_t day, user_uid_t user);
 
 private:
     // day 0 will remain empty for code readablity

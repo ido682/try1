@@ -16,6 +16,7 @@ public:
 
     void AddUser(country_t country, user_uid_t uuid);
     users_ordered_cont_t GetUsersByCountry(const country_t& country);
+    void DeleteUser(country_t country, user_uid_t uuid);
 
 private:
     UUIDsMapper m_countries;

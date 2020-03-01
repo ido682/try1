@@ -49,6 +49,8 @@ int main()
 	}
 
 	std::cout<<"MAIN - names #4 - HaM"<<std::endl;
+	long_id_t id_jefferson = "ed25dcff-4416-58a1-8426-fac9fb32fe89";
+	db_proxy.DeleteUser(id_jefferson);
 	users = db_proxy.GetUsersByAttribute(NAME, "HaM");
 	for (const auto& user : users)
 	{
@@ -63,6 +65,8 @@ int main()
 	}
 
 	std::cout<<"MAIN - age #2 - 50"<<std::endl;
+	long_id_t id_ha = "db291e34-b946-5f51-bc49-6a338aa616c0";
+	db_proxy.DeleteUser(id_ha);
 	users = db_proxy.GetUsersByAttribute(AGE, "50");
 	for (const auto& user : users)
 	{
@@ -77,6 +81,8 @@ int main()
 	}
 
 	std::cout<<"MAIN - country #2 - ET"<<std::endl;
+	long_id_t id_clarke ="9261ee53-72b9-59b8-9356-ca0a4743900d";
+	db_proxy.DeleteUser(id_clarke);
 	users = db_proxy.GetUsersByAttribute(COUNTRY, "ET");
 	for (const auto& user : users)
 	{
@@ -96,6 +102,7 @@ int main()
 	print_user(user1);
 
 	std::cout<<"MAIN - long_id #2 - 8e6fbab1-0244-5fc0-9619-8c1006e22afc"<<std::endl;
+	db_proxy.DeleteUser(long_id1);
 	user_t user2 = db_proxy.GetUserByLongID(long_id1);
 	print_user(user2);
 

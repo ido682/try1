@@ -86,7 +86,26 @@ user_t DBProxy::GetUserByLongID(long_id_t long_id)
 
     user_uid_t uuid = m_users_manager.GetUserByLongID(long_id);
 
+    // Implies user doesn't exist
+    if (uuid == 0)
+    {
+        return {USER_DOESNT_EXIT, USER_DOESNT_EXIT, USER_DOESNT_EXIT, USER_DOESNT_EXIT};
+    }
+
     return get_user_from_uid(uuid);
 }
 
+void DBProxy::DeleteUser(long_id_t long_id)
+{
+    user_uid_t uuid_to_delete = m_users_manager.GetUserByLongID(long_id);
+    // User not found
+    if (uuid_to_delete == 0)
+    {
+        return;
+    }
+
+    user_t user_to_delete = GetUserByLongID(long_id);
+
+    m_users_manager.DeleteUser(user_to_delete, uuid_to_delete);
+}
 

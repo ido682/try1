@@ -47,3 +47,11 @@ user_uid_t UsersManager::GetUserByLongID(const long_id_t& long_id)
     return m_long_ids_manager.GetUsersByLongID(long_id);
 }
 
+user_uid_t UsersManager::DeleteUser(const user_t& user, user_uid_t uuid)
+{
+    m_long_ids_manager.DeleteUser(user.long_id);
+    m_names_manager.DeleteUser(Parser::ParseName(user.full_name), uuid);
+    m_dobs_manager.DeleteUser(Parser::ParseDate(user.dob), uuid);
+    m_countries_manager.DeleteUser(user.country, uuid);
+}
+

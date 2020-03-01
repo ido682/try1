@@ -30,3 +30,8 @@ void Month::AddUsersOfWholeMonthToExternalCont(users_ordered_cont_t& ext_users_c
     add_users_in_range_to_external_cont(1, MAX_DAYS_IN_MONTH + 1, ext_users_cont);
 }
 
+void Month::DeleteUser(day_t day, user_uid_t user)
+{
+    m_days[day].DeleteUser(user);
+}
+

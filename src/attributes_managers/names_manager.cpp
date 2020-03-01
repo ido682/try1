@@ -17,3 +17,10 @@ users_ordered_cont_t NamesManager::GetUsersByName(const std::string& name)
 
     return users;
 }
+
+void NamesManager::DeleteUser(full_name_t full_name, user_uid_t uuid)
+{
+    m_first_names.DeleteUser(full_name.first, uuid);
+    m_last_names.DeleteUser(full_name.second, uuid);
+}
+
